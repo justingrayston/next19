@@ -1,0 +1,66 @@
+steps:
+# Build image
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - 'build'
+    - '--tag=gcr.io/$PROJECT_ID/helloworld:$SHORT_SHA'
+    - '.'
+  id: 'build'
+
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - 'tag'
+    - 'gcr.io/$PROJECT_ID/helloworld:$SHORT_SHA'
+    - 'gcr.io/$PROJECT_ID/helloworld:latest'
+  wait_for: ['build']
+  id: 'tag'
+
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - 'push'
+    - 'gcr.io/$PROJECT_ID/helloworld:$SHORT_SHA'
+  id: 'push_commit'
+  wait_for: ['tag']
+
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - 'push'
+    - 'gcr.io/$PROJECT_ID/helloworld:latest'
+  id: 'push_latest'
+  wait_for: ['tag']
+
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+    - 'functions'
+    - 'deploy'
+    - 'helloWorld'
+    - '--runtime=nodejs10'
+    - '--trigger-http'
+    - '--region=europe-west1'
+    - '--set-env-vars'
+    - 'HELLO_WORLD_MESSAGE=Hello Cloud Next 2019 (GCF europe-west1)'
+
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+    - 'beta'
+    - 'run'
+    - 'deploy'
+    - 'helloworld'
+    - '--image=gcr.io/$PROJECT_ID/helloworld:$SHORT_SHA'
+    - '--cluster=cloud-run-gke'
+    - '--cluster-location=us-west1-a'
+    - '--set-env-vars'
+    - 'HELLO_WORLD_MESSAGE=Hello Cloud Next 2019 (Cloud Run GKE us-west1)'
+  wait_for: ['push_commit', 'push_latest']
+
+# - name: 'gcr.io/cloud-builders/gcloud'
+#   args:
+#     - 'beta'
+#     - 'run'
+#     - 'deploy'
+#     - 'helloworld'
+#     - '--image=gcr.io/$PROJECT_ID/helloworld:$SHORT_SHA'
+#     - '--region=us-central1'
+#     - '--set-env-vars'
+#     - 'HELLO_WORLD_MESSAGE=Hello Cloud Next 2019 (Cloud Run us-central1)'
+#   wait_for: ['push_commit', 'push_latest']

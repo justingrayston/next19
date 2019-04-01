@@ -1,7 +1,0 @@
-steps:
-# Build image
-- name: 'gcr.io/cloud-builders/docker'
-  args:
-  - 'build'
-  - '--tag=gcr.io/$PROJECT_ID/helloworld:$SHORT_SHA'
-  - '.'
