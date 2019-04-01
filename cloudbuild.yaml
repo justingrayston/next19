@@ -53,14 +53,14 @@ steps:
     - 'HELLO_WORLD_MESSAGE=Hello Cloud Next 2019 (Cloud Run GKE us-west1)'
   wait_for: ['push_commit', 'push_latest']
 
-# - name: 'gcr.io/cloud-builders/gcloud'
-#   args:
-#     - 'beta'
-#     - 'run'
-#     - 'deploy'
-#     - 'helloworld'
-#     - '--image=gcr.io/$PROJECT_ID/helloworld:$SHORT_SHA'
-#     - '--region=us-central1'
-#     - '--set-env-vars'
-#     - 'HELLO_WORLD_MESSAGE=Hello Cloud Next 2019 (Cloud Run us-central1)'
-#   wait_for: ['push_commit', 'push_latest']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+    - 'beta'
+    - 'run'
+    - 'deploy'
+    - 'helloworld'
+    - '--image=gcr.io/$PROJECT_ID/helloworld:$SHORT_SHA'
+    - '--region=us-central1'
+    - '--set-env-vars'
+    - 'HELLO_WORLD_MESSAGE=Hello Cloud Next 2019 (Cloud Run us-central1)'
+  wait_for: ['push_commit', 'push_latest']
