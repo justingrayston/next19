@@ -11,7 +11,7 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args:
     - 'build'
-    - '--tag=gcr.io/$PROJECT_ID/${_FUNCTION_NAME_}:$SHORT_SHA'
+    - '--tag=gcr.io/$PROJECT_ID/${_SERVICE_NAME_}:$SHORT_SHA'
     - '.'
   id: 'build'
 
