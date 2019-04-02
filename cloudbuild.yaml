@@ -69,6 +69,7 @@ steps:
     - '${_SERVICE_NAME_}'
     - '--image=gcr.io/$PROJECT_ID/${_SERVICE_NAME_}:$SHORT_SHA'
     - '--region=${_RUN_REGION_}'
+    - '--allow-unauthenticated'
     - '--set-env-vars'
     - 'HELLO_WORLD_MESSAGE=Hello Cloud Next 2019 (Cloud Run ${_RUN_REGION_})'
   wait_for: ['push_commit', 'push_latest']
