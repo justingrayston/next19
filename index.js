@@ -1,4 +1,4 @@
 
 exports.helloWorld = (req, res) => {
-  res.send('Hello, Cloud Next!');
+  res.send('Hello, Cloud Next! \n');
 }
