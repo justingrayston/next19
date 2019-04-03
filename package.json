@@ -4,12 +4,9 @@
   "description": "Simple Hello World",
   "main": "index.js",
   "scripts": {
-    "start": "FUNCTION_TARGET=helloWorld FUNCTION_SIGNATURE_TYPE=http functions-framework",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "Apache-2.0",
-  "dependencies": {
-    "functions-framework": "https://storage.googleapis.com/functions-framework/0.0.1.tar"
-  }
+  "dependencies": {}
 }
