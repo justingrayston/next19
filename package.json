@@ -8,5 +8,7 @@
   },
   "author": "",
   "license": "Apache-2.0",
-  "dependencies": {}
+  "dependencies": {
+    "functions-framework": "https://storage.googleapis.com/functions-framework/0.0.1.tar"
+  }
 }

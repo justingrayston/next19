@@ -1,5 +1,6 @@
-const message = process.env['HELLO_WORLD_MESSAGE'] || 'No message set';
-
+/**
+ * Simple Hello World Function.
+ */
 exports.helloWorld = (req, res) => {
-  res.send(message);
+  res.send('Hello, Cloud Next! \n');
 }
