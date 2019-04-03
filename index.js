@@ -1,4 +1,5 @@
+const message = process.env['HELLO_WORLD_MESSAGE'] || 'No message set';
 
 exports.helloWorld = (req, res) => {
-  res.send('Hello, Cloud Next! \n');
+  res.send(message);
 }
