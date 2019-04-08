@@ -1,7 +1,7 @@
 const message = process.env['MESSAGE'] || 'No message set';
 
 /**
- * A simple function that response with a message set by environment
+ * A simple function that responds with a message set by environment
  * variable.
  * @param {Request} req
  * @param {Response} res
