@@ -21,3 +21,15 @@ As you are deploying from Cloud Build, the Cloud Build service account needs to 
 
 The cloud build file requires the build trigger to have a some custom variables set.
 
+_FUNCTION_NAME\_ = The executable function name, should match index.js.
+
+_SERVICE_NAME\_ = Service name for Cloud Run.
+
+_FUNCTION_REGION\_ = The Region to deploy the function to.
+
+_CLUSTER_NAME\_ = The Cloud Run on GKE cluster name.
+
+_CLUSTER_LOCATION\_ = The Cloud Run on GKE cluster location (master zone).
+
+_RUN_REGION\_ = The Cloud Run region to deploy to.
+
