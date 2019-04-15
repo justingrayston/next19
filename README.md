@@ -13,9 +13,15 @@ However included in this repo is a cloudbuild.yaml file. This does exactly the s
 
 ## The IAM prerequisites
 
-As you are deploying from Cloud Build, the Cloud Build service account needs to be able to "act as" another service account to deploy into {CLOUD RUN and GKE}. So to do that you need to run the following commands so that the Cloud Build Service account can actually deploy.
+As you are deploying from Cloud Build, the Cloud Build service account needs to be able to "act as" another service account to deploy into CLOUD RUN on GKE. So to do that you need to run the following commands so that the Cloud Build Service account can actually deploy. (Replace values between [] with info from the IAM section in the Console).
 
---FILL IN BLANKS WHEN YOU HAVE INTERWEBS--
+For Cloud Build to act as the default App Engine Service Account.
+
+`gcloud iam service-accounts add-iam-policy-binding [project-id]@appspot.gserviceaccount.com --member=[xxxxxxxx]@cloudbuild.gserviceaccount.com --role=roles/iam.serviceAccountUser`
+
+For Cloud Build to act as the compute service account.
+
+`gcloud iam service-accounts add-iam-policy-binding [xxxxxxxx]-compute@developer.gserviceaccount.com --member=[xxxxxxxx]@cloudbuild.gserviceaccount.com --role=roles/iam.serviceAccountUser`
 
 ## Cloud Build Custom Variables
 
