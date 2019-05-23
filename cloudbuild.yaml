@@ -46,7 +46,7 @@ steps:
     - '--trigger-http'
     - '--region=${_FUNCTION_REGION_}'
     - '--set-env-vars'
-    - 'MESSAGE=Hello Serverless London ${_FUNCTION_REGION_}'
+    - 'MESSAGE=Hello London ${_FUNCTION_REGION_}'
 
 - name: 'gcr.io/cloud-builders/gcloud'
   args:
@@ -58,7 +58,7 @@ steps:
     - '--cluster=${_CLUSTER_NAME_}'
     - '--cluster-location=${_CLUSTER_LOCATION_}'
     - '--set-env-vars'
-    - 'MESSAGE=Hello Serverless London (Cloud Run GKE ${_CLUSTER_LOCATION_})'
+    - 'MESSAGE=Hello London (Cloud Run GKE ${_CLUSTER_LOCATION_})'
   wait_for: ['push_commit', 'push_latest']
 
 - name: 'gcr.io/cloud-builders/gcloud'
@@ -71,5 +71,5 @@ steps:
     - '--region=${_RUN_REGION_}'
     - '--allow-unauthenticated'
     - '--set-env-vars'
-    - 'MESSAGE=Hello Cloud Next 2019 (Cloud Run ${_RUN_REGION_})'
+    - 'MESSAGE=Hello London (Cloud Run ${_RUN_REGION_})'
   wait_for: ['push_commit', 'push_latest']
